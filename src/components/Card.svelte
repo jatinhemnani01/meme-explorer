@@ -1,6 +1,5 @@
 <script>
-  import ImageModal from "./ImageModal.svelte";
-  import { showModal } from "../store/showModalStore";
+  import { fade } from "svelte/transition";
   export let img_url;
   export let title;
   export let subreddit;
@@ -14,30 +13,33 @@
     crossorigin="anonymous"
   />
 </svelte:head>
-<div class="ui card card-container">
+<div class="ui card card-container" transition:fade={{ duration: 400 }}>
   <div class="image">
-    <img
-      on:click={() => {
-        $showModal = true;
-      }}
-      src={img_url}
-      alt={title}
-    />
+    <img src={img_url} alt={title} />
   </div>
   <div class="content">
     <div class="header">{title}</div>
   </div>
   <div class="extra content">
-    <div>
-      <i class="user icon" />
-      {subreddit}
+    <div class="badge">
+      <i class="user icon " />
+      r/{subreddit}
     </div>
   </div>
 </div>
 
 <style>
+  .badge {
+    width: 42%;
+    background-color: #636e72;
+    color: #dfe6e9;
+    border-radius: 106px;
+    text-align: center;
+    padding: 0.1em;
+  }
   .card-container {
-    cursor: pointer;
-    background-color: #6b4242;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 </style>
