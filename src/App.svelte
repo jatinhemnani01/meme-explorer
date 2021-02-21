@@ -22,7 +22,7 @@
 
     console.log({ scrollTop, scrollHeight, clientHeight });
 
-    if (clientHeight + scrollTop >= scrollHeight - 5) {
+    if (clientHeight + scrollTop >= scrollHeight - 150) {
       getMemes();
     }
   });
