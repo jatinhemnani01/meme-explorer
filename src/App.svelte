@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import Loading from "./components/Loading.svelte";
   import InputSubreddit from "./components/InputSubreddit.svelte";
+  import ScrollToTop from "./components/ScrollToTop.svelte";
   async function getMemes(subreddit) {
     try {
       $loading = true;
@@ -43,6 +44,7 @@
 <div class="main" id="middle">
   <InputSubreddit />
   <div class="main-card">
+    <ScrollToTop />
     {#each $memes as meme}
       <Card
         img_url={meme.preview[2]}
