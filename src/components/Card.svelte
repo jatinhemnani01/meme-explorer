@@ -22,7 +22,6 @@
   </div>
   <div class="extra content">
     <div class="badge">
-      <i class="user icon " />
       r/{subreddit}
     </div>
   </div>
