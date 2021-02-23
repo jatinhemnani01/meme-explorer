@@ -1,34 +1,49 @@
 <script>
   import Card from "./components/Card.svelte";
+  import { loading } from "./store/loadingStore";
+  import { memes } from "./store/memesStore";
+  import { inputSubreddit } from "./store/subredditStore";
   import { onMount } from "svelte";
   import Loading from "./components/Loading.svelte";
-  let memes = [];
-  let loading = false;
-  async function getMemes() {
+  import InputSubreddit from "./components/InputSubreddit.svelte";
+  async function getMemes(subreddit) {
     try {
-      loading = true;
-      let res = await fetch("https://meme-api.herokuapp.com/gimme/dankmemes/5");
+      $loading = true;
+      let res = await fetch(
+        `https://meme-api.herokuapp.com/gimme/${subreddit}/5`
+      );
       let data = await res.json();
-      memes = [...memes, ...data.memes];
-      loading = false;
-    } catch (error) {}
+      $memes = [...$memes, ...data.memes];
+      $loading = false;
+    } catch (error) {
+      $loading = true;
+    }
   }
 
-  onMount(() => {
-    getMemes();
-  });
-  window.addEventListener("scroll", () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  function loadMoreHandler() {
+    window.addEventListener("scroll", () => {
+      const {
+        scrollTop,
+        scrollHeight,
+        clientHeight,
+      } = document.documentElement;
 
-    if (clientHeight + scrollTop >= scrollHeight - 150) {
-      getMemes();
-    }
+      if (clientHeight + scrollTop >= scrollHeight - 150) {
+        getMemes($inputSubreddit);
+      }
+    });
+  }
+  onMount(() => {
+    getMemes($inputSubreddit);
+
+    loadMoreHandler();
   });
 </script>
 
-<div>
+<div class="main" id="middle">
+  <InputSubreddit />
   <div class="main-card">
-    {#each memes as meme}
+    {#each $memes as meme}
       <Card
         img_url={meme.preview[2]}
         title={meme.title}
@@ -38,12 +53,15 @@
       <Loading />
     {/each}
   </div>
-  {#if loading}
+  {#if $loading}
     <Loading />
   {/if}
 </div>
 
 <style>
+  .main {
+    background-color: #2d3436;
+  }
   .main-card {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
