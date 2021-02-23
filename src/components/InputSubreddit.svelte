@@ -10,16 +10,14 @@
         `https://meme-api.herokuapp.com/gimme/${subreddit}/5`
       );
       let data = await res.json();
-      $memes = [...$memes, ...data.memes];
+      $memes = data.memes;
       $loading = false;
-      y = 4300;
     } catch (error) {
       $loading = true;
     }
   }
 </script>
 
-<svelte:window bind:scrollY={y} />
 <form on:submit|preventDefault={() => getSubredditMemes($inputSubreddit)}>
   <div class="group">
     <input
