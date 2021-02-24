@@ -2,7 +2,8 @@
   import { loading } from "../store/loadingStore";
   import { memes } from "../store/memesStore";
   import { inputSubreddit } from "../store/subredditStore";
-  let y;
+  import { showModal } from "../store/showModalStore";
+  import { showAboutModal } from "../store/showAboutModalStore";
   async function getSubredditMemes(subreddit) {
     try {
       $loading = true;
@@ -34,9 +35,25 @@
 </svelte:head>
 
 <div class="ui pointing menu" id="myForm">
-  <a href="/" class="active item"> Explore </a>
-  <a href="/" class="item"> About </a>
-  <a href="/" class="item"> Donate </a>
+  <div class="active item">Explore</div>
+  <div
+    class="item"
+    on:click={() => {
+      $showAboutModal = true;
+      console.log("ww");
+    }}
+  >
+    About
+  </div>
+  <div
+    on:click={() => {
+      $showModal = true;
+    }}
+    href="/"
+    class="item"
+  >
+    Donate
+  </div>
   <div class="right menu custom" id="right">
     <div class="item" id="items">
       <div class="ui transparent icon input">

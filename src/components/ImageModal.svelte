@@ -1,8 +1,6 @@
 <script>
   import { showModal } from "../store/showModalStore";
   import { fade } from "svelte/transition";
-  export let title;
-  export let img_url;
 </script>
 
 {#if $showModal}
@@ -13,13 +11,42 @@
         $showModal = false;
       }}>&times;</span
     >
-    <div class="modal">
-      <img src={img_url} alt={title} />
+    <div
+      class="modal"
+      on:click|self={() => {
+        $showModal = false;
+      }}
+    >
+      <div class="donate">Click On Below Button To Donate</div>
+      <br />
+      <form>
+        <script
+          src="https://checkout.razorpay.com/v1/payment-button.js"
+          data-payment_button_id="pl_GfQFdLtveYUasE"
+          async>
+        </script>
+      </form>
+      <div class="thanks">Thank You For Your Generous Donations</div>
     </div>
   </div>
 {/if}
 
 <style>
+  .thanks {
+    color: black;
+    background: #b5cc18;
+    padding: 1em;
+    font-size: 1.6em;
+  }
+  form {
+    padding: 1em;
+  }
+  .donate {
+    background-color: green;
+    padding: 1em;
+    color: white;
+    font-size: 1.5em;
+  }
   .modal-wrapper {
     background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -33,11 +60,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-  }
-  img {
-    width: 100%;
-    object-fit: contain;
-    height: 90vh;
+    flex-direction: column;
   }
   .close {
     float: right;

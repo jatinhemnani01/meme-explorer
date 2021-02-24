@@ -7,6 +7,8 @@
   import Loading from "./components/Loading.svelte";
   import InputSubreddit from "./components/InputSubreddit.svelte";
   import ScrollToTop from "./components/ScrollToTop.svelte";
+  import ImageModal from "./components/ImageModal.svelte";
+  import AboutModal from "./components/AboutModal.svelte";
   async function getMemes(subreddit) {
     try {
       $loading = true;
@@ -58,6 +60,8 @@
   {#if $loading}
     <Loading />
   {/if}
+  <ImageModal />
+  <AboutModal />
 </div>
 
 <style>
