@@ -37,7 +37,7 @@
   <a href="/" class="active item"> Explore </a>
   <a href="/" class="item"> About </a>
   <a href="/" class="item"> Donate </a>
-  <div class="right menu custom">
+  <div class="right menu custom" id="right">
     <div class="item" id="items">
       <div class="ui transparent icon input">
         <form
@@ -72,7 +72,11 @@
       text-align: center;
       align-items: center;
     }
+    #right {
+      margin-left: 0px !important;
+    }
   }
+
   input {
     font-size: 1.4em;
   }
