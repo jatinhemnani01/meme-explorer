@@ -2,18 +2,22 @@
   import { loading } from "../store/loadingStore";
   import { memes } from "../store/memesStore";
   import { inputSubreddit } from "../store/subredditStore";
+  import { isError } from "../store/errorStore";
   import { showAboutModal } from "../store/showAboutModalStore";
   async function getSubredditMemes(subreddit) {
-    try {
-      $loading = true;
-      let res = await fetch(
-        `https://meme-api.herokuapp.com/gimme/${subreddit}/5`
-      );
+    $loading = true;
+    let res = await fetch(
+      `https://meme-api.herokuapp.com/gimme/${subreddit}/5`
+    );
+    if (res.ok) {
       let data = await res.json();
       $memes = data.memes;
       $loading = false;
-    } catch (error) {
+      $isError = false;
+      console.log("no error");
+    } else {
       $loading = true;
+      $isError = true;
     }
   }
 </script>
@@ -39,7 +43,6 @@
     class="item"
     on:click={() => {
       $showAboutModal = true;
-      console.log("ww");
     }}
   >
     About

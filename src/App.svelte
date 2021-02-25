@@ -8,6 +8,7 @@
   import InputSubreddit from "./components/InputSubreddit.svelte";
   import ScrollToTop from "./components/ScrollToTop.svelte";
   import AboutModal from "./components/AboutModal.svelte";
+  import Error from "./components/Error.svelte";
   async function getMemes(subreddit) {
     try {
       $loading = true;
@@ -44,6 +45,7 @@
 
 <div class="main" id="middle">
   <InputSubreddit />
+  <Error />
   <div class="main-card">
     <ScrollToTop />
     {#each $memes as meme}
