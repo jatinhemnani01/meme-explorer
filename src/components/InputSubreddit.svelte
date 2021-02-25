@@ -2,7 +2,6 @@
   import { loading } from "../store/loadingStore";
   import { memes } from "../store/memesStore";
   import { inputSubreddit } from "../store/subredditStore";
-  import { showModal } from "../store/showModalStore";
   import { showAboutModal } from "../store/showAboutModalStore";
   async function getSubredditMemes(subreddit) {
     try {
@@ -45,15 +44,7 @@
   >
     About
   </div>
-  <div
-    on:click={() => {
-      $showModal = true;
-    }}
-    href="/"
-    class="item"
-  >
-    Donate
-  </div>
+  <a href="https://rzp.io/l/AieLJo1rd" target="_blank" class="item">Donate</a>
   <div class="right menu custom" id="right">
     <div class="item" id="items">
       <div class="ui transparent icon input">

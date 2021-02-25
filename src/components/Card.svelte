@@ -29,7 +29,6 @@
 
 <style>
   .badge {
-    width: 42%;
     background-color: #636e72;
     color: #dfe6e9;
     border-radius: 106px;

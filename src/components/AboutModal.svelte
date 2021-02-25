@@ -4,7 +4,13 @@
 </script>
 
 {#if $showAboutModal}
-  <div transition:fade={{ duration: 500 }}>
+  <div
+    height="100vh"
+    on:click={() => {
+      $showAboutModal = false;
+    }}
+    transition:fade={{ duration: 500 }}
+  >
     <h2>Modal Example</h2>
 
     <!-- Trigger/Open The Modal -->
