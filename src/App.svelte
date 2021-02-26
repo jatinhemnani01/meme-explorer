@@ -9,6 +9,7 @@
   import ScrollToTop from "./components/ScrollToTop.svelte";
   import AboutModal from "./components/AboutModal.svelte";
   import Error from "./components/Error.svelte";
+  import ContactModal from "./components/ContactModal.svelte";
   async function getMemes(subreddit) {
     try {
       $loading = true;
@@ -62,6 +63,7 @@
     <Loading />
   {/if}
   <AboutModal />
+  <ContactModal />
 </div>
 
 <style>

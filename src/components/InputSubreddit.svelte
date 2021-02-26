@@ -4,6 +4,8 @@
   import { inputSubreddit } from "../store/subredditStore";
   import { isError } from "../store/errorStore";
   import { showAboutModal } from "../store/showAboutModalStore";
+  import { showContactModal } from "../store/showContactModal";
+  import RoundBadge from "./RoundBadge.svelte";
   async function getSubredditMemes(subreddit) {
     $loading = true;
     let res = await fetch(
@@ -14,7 +16,6 @@
       $memes = data.memes;
       $loading = false;
       $isError = false;
-      console.log("no error");
     } else {
       $loading = true;
       $isError = true;
@@ -38,8 +39,9 @@
 </svelte:head>
 
 <div class="ui pointing menu" id="myForm">
-  <div class="active item">Explore</div>
+  <div style="cursor:pointer;" class="active item">Explore</div>
   <div
+    style="cursor:pointer;"
     class="item"
     on:click={() => {
       $showAboutModal = true;
@@ -47,7 +49,21 @@
   >
     About
   </div>
-  <a href="https://rzp.io/l/AieLJo1rd" target="_blank" class="item">Donate</a>
+  <div
+    style="cursor:pointer;"
+    class="item"
+    on:click={() => {
+      $showContactModal = true;
+    }}
+  >
+    Contact
+  </div>
+  <a
+    rel="noopener noreferrer"
+    href="https://rzp.io/l/AieLJo1rd"
+    target="_blank"
+    class="item">Donate</a
+  >
   <div class="right menu custom" id="right">
     <div class="item" id="items">
       <div class="ui transparent icon input">
@@ -72,6 +88,7 @@
 <div class="ui segment">
   <p />
 </div>
+<RoundBadge />
 
 <style>
   @media screen and (max-width: 430px) {
