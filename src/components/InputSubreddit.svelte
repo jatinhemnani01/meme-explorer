@@ -44,15 +44,6 @@
     style="cursor:pointer;"
     class="item"
     on:click={() => {
-      $showAboutModal = true;
-    }}
-  >
-    About
-  </div>
-  <div
-    style="cursor:pointer;"
-    class="item"
-    on:click={() => {
       $showContactModal = true;
     }}
   >
