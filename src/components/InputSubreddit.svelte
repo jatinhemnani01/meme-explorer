@@ -3,9 +3,10 @@
   import { memes } from "../store/memesStore";
   import { inputSubreddit } from "../store/subredditStore";
   import { isError } from "../store/errorStore";
-  import { showAboutModal } from "../store/showAboutModalStore";
   import { showContactModal } from "../store/showContactModal";
   import RoundBadge from "./RoundBadge.svelte";
+
+  // function for fetching subreddit memes
   async function getSubredditMemes(subreddit) {
     $loading = true;
     let res = await fetch(
@@ -23,6 +24,7 @@
   }
 </script>
 
+<!-- css frameworkds -->
 <svelte:head>
   <link
     rel="stylesheet"
@@ -49,12 +51,14 @@
   >
     Contact
   </div>
+  <!-- RAZORPAY -->
   <a
     rel="noopener noreferrer"
     href="https://rzp.io/l/AieLJo1rd"
     target="_blank"
     class="item">Donate</a
   >
+  <!-- RAZORPAY -->
   <div class="right menu custom" id="right">
     <div class="item" id="items">
       <div class="ui transparent icon input">

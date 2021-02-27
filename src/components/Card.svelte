@@ -5,6 +5,7 @@
   export let subreddit;
 </script>
 
+<!-- SEMANTIC UI -->
 <svelte:head>
   <link
     rel="stylesheet"
@@ -13,6 +14,8 @@
     crossorigin="anonymous"
   />
 </svelte:head>
+
+<!-- CARD -->
 <div class="ui card card-container" transition:fade={{ duration: 400 }}>
   <div class="image">
     <img src={img_url} alt={title} />

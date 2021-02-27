@@ -10,6 +10,7 @@
   import AboutModal from "./components/AboutModal.svelte";
   import Error from "./components/Error.svelte";
   import ContactModal from "./components/ContactModal.svelte";
+  // function to fetch the memes
   async function getMemes(subreddit) {
     try {
       $loading = true;
@@ -24,6 +25,7 @@
     }
   }
 
+  // function for infinite scrolling
   function loadMoreHandler() {
     window.addEventListener("scroll", () => {
       const {
@@ -37,6 +39,8 @@
       }
     });
   }
+
+  // onMount to fetch on start
   onMount(() => {
     getMemes($inputSubreddit);
 
@@ -45,10 +49,17 @@
 </script>
 
 <div class="main" id="middle">
+  <!-- NAVBAR + FORM + SEARCH -->
   <InputSubreddit />
+
+  <!-- SHOWS ERROR IF SUBREDDIT DOESN'T EXIST -->
   <Error />
+  <!-- MAIN CARD -->
   <div class="main-card">
+    <!-- SCROLL TO TOP BUTTON -->
     <ScrollToTop />
+
+    <!-- LOOPING TO ALL MEMES -->
     {#each $memes as meme}
       <Card
         img_url={meme.preview[2]}
@@ -56,13 +67,17 @@
         subreddit={meme.subreddit}
       />
     {:else}
+      <!-- LOADING SCREEN -->
       <Loading />
     {/each}
   </div>
   {#if $loading}
+    <!-- LOADING SPINNER -->
     <Loading />
   {/if}
   <AboutModal />
+
+  <!-- CONTACT PAGE -->
   <ContactModal />
 </div>
 
