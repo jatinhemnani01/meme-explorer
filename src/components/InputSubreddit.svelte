@@ -54,7 +54,7 @@
   <!-- RAZORPAY -->
   <a
     rel="noopener noreferrer"
-    href="https://rzp.io/l/AieLJo1rd"
+    href="https://rzp.io/l/XWshUz4"
     target="_blank"
     class="item">Donate</a
   >
