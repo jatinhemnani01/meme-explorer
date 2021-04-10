@@ -86,7 +86,7 @@
 <RoundBadge />
 
 <style>
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 570px) {
     #myForm {
       display: flex;
       flex-direction: column;

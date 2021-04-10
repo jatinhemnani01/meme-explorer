@@ -34,7 +34,7 @@
         clientHeight,
       } = document.documentElement;
 
-      if (clientHeight + scrollTop >= scrollHeight - 150) {
+      if (clientHeight + scrollTop >= scrollHeight - 180) {
         getMemes($inputSubreddit);
       }
     });
